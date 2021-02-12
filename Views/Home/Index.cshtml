@@ -1,0 +1,14 @@
+﻿@model IEnumerable<VivesBlog.Models.Blog>;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+@foreach (var blog in Model)
+{
+    <div class="shadow p-3 mb-5 bg-white rounded" style="margin: 10px; ">
+        <h2>@blog.Titel</h2>
+        <p>@blog.Inhoud</p>
+    </div>
+}

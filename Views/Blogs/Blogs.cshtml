@@ -1,0 +1,21 @@
+﻿@model IEnumerable<VivesBlog.Models.Blog>;
+
+@{
+    ViewBag.Title = "Blogs";
+    Layout = "_Layout";
+}
+
+<table class="table table">
+    <tr>
+        <th>Titel</th>
+        <th>Inhoud</th>
+    </tr>
+    @foreach (var blog in Model)
+    {
+        <tr>
+            <td>@blog.Titel</td>
+            <td>@blog.Inhoud</td>
+        </tr>
+    }
+
+</table>
