@@ -5,29 +5,34 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using VivesBlog.Core;
 using VivesBlog.Models;
 
 namespace VivesBlog.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IDatabase _database;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IDatabase database)
         {
-            _logger = logger;
+            _database = database;
+        }
+        public IList<Blog> GetBlogs()
+        {
+            return _database.Blogs;
         }
 
         public IActionResult Index()
         {
-            var blogLijst = new List<Blog>(Blog.maakData());
+            var blogLijst = GetBlogs();
 
             return View(blogLijst);
         }
 
         public IActionResult Read(int id)
         {
-            var blogLijst = new List<Blog>(Blog.maakData());
+            var blogLijst = GetBlogs();
             
             // SingleOrDefault(): selecteer het enige element van de lijst dat voldoet aan de criteria
             // dit geval: als het id gelijk is aan het meegegeven id
