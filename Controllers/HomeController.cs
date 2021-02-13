@@ -20,11 +20,27 @@ namespace VivesBlog.Controllers
 
         public IActionResult Index()
         {
-            var lijst = new List<Blog>(Blog.maakData());
+            var blogLijst = new List<Blog>(Blog.maakData());
 
-            return View(lijst);
+            return View(blogLijst);
         }
 
+        public IActionResult Read(int id)
+        {
+            var blogLijst = new List<Blog>(Blog.maakData());
+            
+            // SingleOrDefault(): selecteer het enige element van de lijst dat voldoet aan de criteria
+            // dit geval: als het id gelijk is aan het meegegeven id
+            var blog = blogLijst.SingleOrDefault(foo => foo.Id == id);
+
+            if (blog == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(blog);
+        }
+        
         public IActionResult Privacy()
         {
             return View();

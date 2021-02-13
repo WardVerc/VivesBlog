@@ -1,0 +1,10 @@
+﻿@model VivesBlog.Models.Blog;
+
+@{
+    ViewBag.Title = @Model.Titel;
+    Layout = "_Layout";
+}
+<div class="card">
+    <h2 class="card-header">@Model.Titel</h2>
+    <p class="card-body">@Model.Inhoud</p>
+</div>

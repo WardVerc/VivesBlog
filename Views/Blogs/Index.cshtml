@@ -12,10 +12,7 @@
     </tr>
     @foreach (var blog in Model)
     {
-        <tr>
-            <td>@blog.Titel</td>
-            <td>@blog.Inhoud</td>
-        </tr>
+        <partial name="BlogPartial" model="blog" />
     }
 
 </table>

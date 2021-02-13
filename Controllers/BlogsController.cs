@@ -7,7 +7,7 @@ namespace VivesBlog.Controllers
     public class BlogsController : Controller
     {
         // GET
-        public IActionResult Blogs()
+        public IActionResult Index()
         {
             var lijst = new List<Blog>(Blog.maakData());
 

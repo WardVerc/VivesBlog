@@ -1,0 +1,15 @@
+﻿@model VivesBlog.Models.Blog;
+
+
+<div class="card" style="margin: 10px;">
+    <div class="card-header">
+        <h5>@Model.Titel</h5>
+    </div>
+    <div class="card-body">
+        <p class="card-text">@Model.Inhoud</p>
+        
+        <!-- asp-route-*naam variabele van je Action*: geeft een parameter mee voor je Action-->
+        <!-- gebruik dezelfde naam als je parameter in je Action -->
+        <a asp-action="Read" asp-route-id="@Model.Id" class="btn btn-secondary">Read more...</a>
+    </div>
+</div>
