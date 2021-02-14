@@ -6,8 +6,10 @@ namespace VivesBlog.Models
     {
         public string Titel { get; set; }
         public string Inhoud { get; set; }
-        
         public int Id { get; set; }
+        
+        public int AuthorId { get; set; }
+        public Author Author { get; set; }
         
     }
 }
