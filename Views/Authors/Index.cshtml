@@ -1,0 +1,20 @@
+﻿@model IEnumerable<VivesBlog.Models.Author>;
+
+@{
+    ViewBag.Title = "Authors";
+    Layout = "_Layout";
+}
+
+<table class="table table">
+    <tr>
+        <th>Naam</th>
+        <th>Voornaam</th>
+        <th>Acties</th>
+    </tr>
+    @foreach (var author in Model)
+    {
+        <partial name="AuthorPartial" model="author" />
+    }
+   </table>
+<br />
+<a asp-action="Create" class="btn btn-primary">Nieuw</a>

@@ -1,0 +1,10 @@
+﻿@model VivesBlog.Models.Author;
+
+<form method="post">
+    <input type="hidden" asp-for="Id" value="@Model.Id" />
+    <label asp-for="Voornaam">Voornaam</label>
+    <input asp-for="Voornaam" class="form-control" value="@Model.Voornaam"/>
+    <label asp-for="Naam">Naam</label>
+    <input asp-for="Naam" class="form-control" value="@Model.Naam"/>
+    <input type="submit" value="Bewerken" class="btn btn-primary" style="margin-top: 10px;"/>
+</form>

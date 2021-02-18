@@ -82,3 +82,7 @@ D:\Vives\Projecten Rider - WebDev\VivesBlog\obj\Debug\net5.0\Razor\Views\Blogs\I
 D:\Vives\Projecten Rider - WebDev\VivesBlog\obj\Debug\net5.0\Razor\Views\Blogs\BlogPartial.cshtml.g.cs
 D:\Vives\Projecten Rider - WebDev\VivesBlog\obj\Debug\net5.0\Razor\Views\Home\BlogPartial.cshtml.g.cs
 D:\Vives\Projecten Rider - WebDev\VivesBlog\obj\Debug\net5.0\Razor\Views\Home\Read.cshtml.g.cs
+D:\Vives\Projecten Rider - WebDev\VivesBlog\obj\Debug\net5.0\Razor\Views\Authors\AuthorPartial.cshtml.g.cs
+D:\Vives\Projecten Rider - WebDev\VivesBlog\obj\Debug\net5.0\Razor\Views\Authors\Index.cshtml.g.cs
+D:\Vives\Projecten Rider - WebDev\VivesBlog\obj\Debug\net5.0\Razor\Views\Authors\Create.cshtml.g.cs
+D:\Vives\Projecten Rider - WebDev\VivesBlog\obj\Debug\net5.0\Razor\Views\Authors\Edit.cshtml.g.cs
