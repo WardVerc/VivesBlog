@@ -1,0 +1,14 @@
+﻿@model VivesBlog.Models.Blog;
+
+
+<form method="post">
+    <label asp-for="Titel">Titel</label>
+    <input asp-for="Titel" class="form-control" />
+    <label asp-for="Inhoud">Inhoud</label>
+    <input asp-for="Inhoud" type="text" class="form-control"/>
+    <label asp-for="Author">Auteur</label>
+    
+    <!-- asp-items="Model.Author" moet nog als property in de volgende select -->
+    <select asp-for="Author" ></select>
+    <input type="submit" value="Aanmaken" class="btn btn-primary" style="margin-top: 10px;"/>
+</form>

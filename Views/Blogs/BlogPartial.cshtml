@@ -1,7 +1,14 @@
 ﻿@model VivesBlog.Models.Blog;
 
+<form method="post">
 <tr>
       <td>@Model.Titel</td>
       <td>@Model.Inhoud</td>
       <td>@Model.Author.Naam @Model.Author.Voornaam</td>
+      <td>
+           <a type="submit" class="btn btn-secondary" asp-action="Edit" asp-route-id="@Model.Id">Bewerken</a>
+           <button type="submit" class="btn btn-primary" style="background-color: red;"
+                    asp-action="Delete" asp-route-id="@Model.Id">Verwijderen</button>
+      </td>
 </tr>
+</form>
