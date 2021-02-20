@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using VivesBlog.Core;
 using VivesBlog.Models;
+using VivesBlog.ViewModels;
 
 namespace VivesBlog.Controllers
 {
@@ -29,15 +30,16 @@ namespace VivesBlog.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            
-            return View();
+            var model = new BlogAuthorViewModel {Authors = _database.Authors};
+
+            return View(model);
         }
         
         [HttpPost]
         public IActionResult Create(Blog blog)
         {
-            //niet zeker waarom ik AuthorId nog eens apart bijhou
-            blog.AuthorId = blog.Author.Id;
+            var authorBlog = _database.Authors.SingleOrDefault(a => a.Id == blog.AuthorId);
+            blog.Author = authorBlog;
             blog.Id = GetNewId();
             _database.Blogs.Add(blog);
             
@@ -61,13 +63,21 @@ namespace VivesBlog.Controllers
         public IActionResult Edit(int id)
         {
             var databaseBlog = _database.Blogs.SingleOrDefault(b => b.Id == id);
+            var model = new BlogAuthorViewModel
+            {
+                Authors = _database.Authors,
+                Blog = databaseBlog
+            };
 
-            return View(databaseBlog);
+            return View(model);
         }
 
         [HttpPost]
         public IActionResult Edit(Blog blog)
         {
+            //author veld van blog is nog niet ingevuld
+            blog.Author = _database.Authors.SingleOrDefault(a => a.Id == blog.AuthorId);
+            
             var databaseBlog = _database.Blogs.SingleOrDefault(b => b.Id == blog.Id);
 
             if (databaseBlog == null)

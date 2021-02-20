@@ -1,13 +1,17 @@
-﻿@model VivesBlog.Models.Blog;
+﻿@model VivesBlog.ViewModels.BlogAuthorViewModel;
+
+@{
+    var authors = new SelectList(Model.Authors, "Id", "Voornaam", Model.Blog.AuthorId);
+}
 
 <form method="post">
-    <label asp-for="Titel">Titel</label>
-    <input asp-for="Titel" class="form-control" value="@Model.Titel"/>
-    <label asp-for="Inhoud">Inhoud</label>
-    <input asp-for="Inhoud" type="text" class="form-control" value="@Model.Inhoud"/>
-    <label asp-for="Author">Auteur</label>
-    
-    <!-- asp-items="Model.Author" moet nog als property in de volgende select -->
-    <select asp-for="Author" ></select>
+    <input type="hidden" asp-for="Blog.Id" value="@Model.Blog.Id"/>
+    <label asp-for="Blog.Titel">Titel</label>
+    <input asp-for="Blog.Titel" class="form-control" value="@Model.Blog.Titel"/>
+    <label asp-for="Blog.Inhoud">Inhoud</label>
+    <input asp-for="Blog.Inhoud" type="text" class="form-control" value="@Model.Blog.Inhoud"/>
+    <label asp-for="Blog.AuthorId">Auteur</label>
+
+    <select asp-for="Blog.AuthorId" asp-items="@authors" class="form-control"></select>
     <input type="submit" value="Bewerken" class="btn btn-primary" style="margin-top: 10px;"/>
 </form>
