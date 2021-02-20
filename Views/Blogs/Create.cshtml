@@ -1,7 +1,18 @@
 ﻿@model VivesBlog.ViewModels.BlogAuthorViewModel;
 
 @{
-    var authors = new SelectList(Model.Authors, "Id", "Voornaam", 0);
+    //origineel (kan slechts 1 veld tonen in de dropdown):
+    //var authors = new SelectList(Model.Authors, "Id", "Voornaam", 0);
+
+    //de lijst omzetten zodat je eender wat kan visualiseren in de dropdown
+    var authorList = Model.Authors.Select(a =>
+        new
+        {
+            Id = a.Id,
+            Name = $"{a.Voornaam} {a.Naam}"
+        });
+    var authors = new SelectList(authorList, "Id", "Name", 0);
+    
 }
 
 <form method="post">

@@ -1,7 +1,16 @@
 ﻿@model VivesBlog.ViewModels.BlogAuthorViewModel;
 
 @{
-    var authors = new SelectList(Model.Authors, "Id", "Voornaam", Model.Blog.AuthorId);
+    //origineel (kan slechts 1 veld tonen in de dropdown):
+    //var authors = new SelectList(Model.Authors, "Id", "Voornaam", 0);
+
+    var authorList = Model.Authors.Select(a =>
+        new
+        {
+            Id = a.Id,
+            Name = $"{a.Voornaam} {a.Naam}"
+        });
+    var authors = new SelectList(authorList, "Id", "Name", Model.Blog.AuthorId);
 }
 
 <form method="post">
