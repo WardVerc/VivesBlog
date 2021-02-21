@@ -33,8 +33,14 @@ namespace VivesBlog.Controllers
         }
         
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Author author)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Create");
+            }
+            
             author.Id = GetNewId();
             _database.Authors.Add(author);
             
@@ -63,8 +69,14 @@ namespace VivesBlog.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(Author author)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Edit");
+            }
+            
             var databaseAuthor = _database.Authors.SingleOrDefault(a => a.Id == author.Id);
 
             if (databaseAuthor == null)

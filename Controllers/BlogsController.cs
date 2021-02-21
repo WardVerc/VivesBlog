@@ -39,7 +39,7 @@ namespace VivesBlog.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Blog blog)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return RedirectToAction("Create");
             }
@@ -78,8 +78,13 @@ namespace VivesBlog.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Edit(Blog blog)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Edit");
+            }
             //author veld van blog is nog niet ingevuld
             blog.Author = _database.Authors.SingleOrDefault(a => a.Id == blog.AuthorId);
             
