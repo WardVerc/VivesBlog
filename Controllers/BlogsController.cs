@@ -36,8 +36,13 @@ namespace VivesBlog.Controllers
         }
         
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Blog blog)
         {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Create");
+            }
             var authorBlog = _database.Authors.SingleOrDefault(a => a.Id == blog.AuthorId);
             blog.Author = authorBlog;
             blog.Id = GetNewId();
